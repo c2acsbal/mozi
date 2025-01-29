@@ -31,3 +31,49 @@ def kiir(nezoter):
             print(nezoter[0][i], str(i+1).zfill(2), nezoter[1][i])
 
 kiir(teljes)
+bekert = int(input())
+def ureshelyszuro(bekert):
+    vanures2 = False
+    vanures3 = False
+    vanures4 = False
+    vanures5 = False
+    vanuresplusz = False
+    for p in range(len(teljes)-1):
+        ures = 0
+        ezasor = 0
+        josor = 0
+        ezazoszlop = 0
+        for resz in teljes:
+            ezazoszlop += 1
+            for sor in resz:
+                    for szek in sor:
+                        if szek == 0:
+                            ures += 1
+                        else:
+                            ures = 0
+                        if bekert == 2:
+                            if ures == 2:
+                                vanures2 = True
+                                joszlop = ezazoszlop
+                                tempi = sor
+                        if bekert == 3:
+                            if ures == 3:
+                                vanures3 = True
+                                joszlop = ezazoszlop
+                                tempi = sor
+                        if bekert == 4:
+                            if ures == 4:
+                                vanures4 = True
+                                joszlop = ezazoszlop
+                                tempi = sor
+                        if bekert == 5:
+                            if ures == 5:
+                                vanures5 = True
+                                joszlop = ezazoszlop
+                                tempi = sor
+                        if bekert > 1 and vanures2 == False and vanures3 == False and vanures4 == False and vanures5 == False and bekert < ures:
+                            vanuresplusz = False
+                            joszlop = ezazoszlop
+                            tempi = sor
+    return(vanures2, vanures3, vanures4, vanures5, vanuresplusz, josor, tempi)
+print(ureshelyszuro(bekert))
