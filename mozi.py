@@ -38,7 +38,7 @@ def ureshelyszuro(bekert):
     vanures4 = False
     vanures5 = False
     vanuresplusz = False
-    for p in range(len(teljes)-1):
+    for p in range(len(teljes)):
         ures = 0
         ezasor = 0
         josor = 0
@@ -46,6 +46,7 @@ def ureshelyszuro(bekert):
         for resz in teljes:
             ezazoszlop += 1
             for sor in resz:
+                    ezasor += 1
                     for szek in sor:
                         if szek == 0:
                             ures += 1
@@ -56,24 +57,29 @@ def ureshelyszuro(bekert):
                                 vanures2 = True
                                 joszlop = ezazoszlop
                                 tempi = sor
+                                josor = ezasor
                         if bekert == 3:
                             if ures == 3:
                                 vanures3 = True
                                 joszlop = ezazoszlop
                                 tempi = sor
+                                josor = ezasor
                         if bekert == 4:
                             if ures == 4:
                                 vanures4 = True
                                 joszlop = ezazoszlop
                                 tempi = sor
+                                josor = ezasor
                         if bekert == 5:
                             if ures == 5:
                                 vanures5 = True
                                 joszlop = ezazoszlop
                                 tempi = sor
+                                josor = ezasor
                         if bekert > 1 and vanures2 == False and vanures3 == False and vanures4 == False and vanures5 == False and bekert < ures:
                             vanuresplusz = False
                             joszlop = ezazoszlop
                             tempi = sor
+                            josor = ezasor
     return(vanures2, vanures3, vanures4, vanures5, vanuresplusz, josor, tempi)
 print(ureshelyszuro(bekert))
