@@ -8,14 +8,14 @@ def feltolto():
     teljes = []
     while len(nezoterbal) != 16:
         for i in range(10):
-            randi = random.randint(0,4)
+            randi = random.randint(0,3)
             sor.append(randi)
         nezoterbal.append(sor)
         sor = []
 
     while len(nezoterjobb) != 16:
         for t in range(10):
-            randi2 = random.randint(0,4)
+            randi2 = random.randint(0,3)
             sor2.append(randi2)
         nezoterjobb.append(sor2)
         sor2 = []
@@ -31,7 +31,18 @@ def kiir(nezoter):
             print(nezoter[0][i], str(i+1).zfill(2), nezoter[1][i])
 
 kiir(teljes)
-bekert = int(input())
+
+def bekero():
+    print("Hány jegy kell (max. 5)")
+    bekert = int(input())
+
+    while bekert > 5:
+        print("Ez így nem jó mert ötnél tőbb nem lehet")
+        bekert = int(input())
+    return bekert
+
+bekert = bekero()
+
 def ureshelyszuro(bekert):
     vanures2 = False
     vanures3 = False
@@ -45,6 +56,7 @@ def ureshelyszuro(bekert):
         ezazoszlop = 0
         for resz in teljes:
             ezazoszlop += 1
+            ezasor = 0
             for sor in resz:
                     ezasor += 1
                     for szek in sor:
@@ -56,30 +68,50 @@ def ureshelyszuro(bekert):
                             if ures == 2:
                                 vanures2 = True
                                 joszlop = ezazoszlop
-                                tempi = sor
                                 josor = ezasor
                         if bekert == 3:
                             if ures == 3:
                                 vanures3 = True
                                 joszlop = ezazoszlop
-                                tempi = sor
                                 josor = ezasor
                         if bekert == 4:
                             if ures == 4:
                                 vanures4 = True
                                 joszlop = ezazoszlop
-                                tempi = sor
                                 josor = ezasor
                         if bekert == 5:
                             if ures == 5:
                                 vanures5 = True
                                 joszlop = ezazoszlop
-                                tempi = sor
                                 josor = ezasor
                         if bekert > 1 and vanures2 == False and vanures3 == False and vanures4 == False and vanures5 == False and bekert < ures:
                             vanuresplusz = False
                             joszlop = ezazoszlop
-                            tempi = sor
                             josor = ezasor
-    return(vanures2, vanures3, vanures4, vanures5, vanuresplusz, josor, tempi)
+    return(vanures2, vanures3, vanures4, vanures5, vanuresplusz, joszlop, josor)
 print(ureshelyszuro(bekert))
+
+vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor = ureshelyszuro(bekert)
+
+def szamolos(teljes):
+    felnotbev = 0
+    diakbev = 0
+    gyerekbev = 0
+    #0 - üres, 1 felnőtt, 2 - diák, 3 - gyerek
+
+    for sor in teljes:
+        for sorr in sor:
+            for szek in sorr:
+                if szek == 1:
+                    felnotbev += 2500
+                elif szek == 2:
+                    diakbev += 2100
+                elif szek == 3:
+                    gyerekbev += 1300
+
+    osszbev = gyerekbev + diakbev + felnotbev
+    return osszbev
+
+osszbev = szamolos(teljes)
+
+print(osszbev)
