@@ -26,17 +26,17 @@ def feltolto():
 
 teljes = feltolto()
 
-def kiir(nezoter):
+def kiiir(nezoter):
     for i in range(len(nezoter[0])-1):
             print(nezoter[0][i], str(i+1).zfill(2), nezoter[1][i])
 
-kiir(teljes)
+kiiir(teljes)
 
 def bekero():
     print("Hány jegy kell (max. 5)")
     bekert = int(input())
 
-    while bekert > 5:
+    while bekert > 5 and bekert < 2:
         print("Ez így nem jó mert ötnél tőbb nem lehet")
         bekert = int(input())
     return bekert
@@ -89,7 +89,6 @@ def ureshelyszuro(bekert):
                             joszlop = ezazoszlop
                             josor = ezasor
     return(vanures2, vanures3, vanures4, vanures5, vanuresplusz, joszlop, josor)
-print(ureshelyszuro(bekert))
 
 vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor = ureshelyszuro(bekert)
 
@@ -118,13 +117,51 @@ def szamolos(teljes):
     osszbev = gyerekbev + diakbev + felnotbev
     return osszbev, teljesardb, osszdb
 osszbev, teljesdb, osszdb = szamolos(teljes)
-osszbev = szamolos(teljes)
-print(osszdb)
 
 def kihasznallak(osszdb):
     kihaszn = osszdb / (15*20)
     return kihaszn
 
 kihasznaltsag = kihasznallak(osszdb)
-print(round(kihasznaltsag*100, 2), "%")
 
+def kiir(vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor, kihasznaltsag, osszbev, teljesdb, osszdb, bekert):
+    if vanures2 == True:
+        print("Persze, hogy van egymás melett 2 üres hely! Itt van:")
+        if oszlop == 1:
+            print("Bal oszlop","", sor, ". sor")
+        elif oszlop == 2:
+            print("Jobb oszlop","", sor, ". sor")
+    elif vanures3 == True:
+        print("Persze, hogy van egymás melett 3 üres hely! Itt van:")
+        if oszlop == 1:
+            print("Bal oszlop","", sor, ". sor")
+        elif oszlop == 2:
+            print("Jobb oszlop","", sor, ". sor")
+    elif vanures4 == True:
+        print("Persze, hogy van egymás melett 4 üres hely! Itt van:")
+        if oszlop == 1:
+            print("Bal oszlop","", sor, ". sor")
+        elif oszlop == 2:
+            print("Jobb oszlop","", sor, ". sor")
+    elif vanures5 == True:
+        print("Persze, hogy van egymás melett 5 üres hely! Itt van:")
+        if oszlop == 1:
+            print("Bal oszlop","", sor, ". sor")
+        elif oszlop == 2:
+            print("Jobb oszlop","", sor, ". sor")
+    elif vanuresplusz == True:
+        print("Persze, hogy van egymás melett", bekert, "üres hely! Itt van:")
+        if oszlop == 1:
+            print("Bal oszlop","", sor, ". sor")
+        elif oszlop == 2:
+            print("Jobb oszlop","", sor, ". sor")
+    
+    print("Itt a mozi kihasználtsága százalélkban", round(kihasznaltsag*100, 2), "%")
+    print("")
+    print("Össszesen", osszdb, "jegyet értékesítettek")
+    print("")
+    print("A mozi összbevétele", osszbev, "Ft volt")
+    print("")
+    print(teljesdb, "db teljes árú jegyet értékesítettek")
+
+kiir(vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor, kihasznaltsag, osszbev, teljesdb, osszdb, bekert)
