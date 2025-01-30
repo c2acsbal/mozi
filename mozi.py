@@ -97,6 +97,9 @@ def szamolos(teljes):
     felnotbev = 0
     diakbev = 0
     gyerekbev = 0
+    teljesardb = 0
+    dikadb = 0
+    gyerekdb = 0
     #0 - üres, 1 felnőtt, 2 - diák, 3 - gyerek
 
     for sor in teljes:
@@ -104,14 +107,24 @@ def szamolos(teljes):
             for szek in sorr:
                 if szek == 1:
                     felnotbev += 2500
+                    teljesardb += 1
                 elif szek == 2:
                     diakbev += 2100
+                    dikadb += 1
                 elif szek == 3:
                     gyerekbev += 1300
-
+                    gyerekdb += 1
+    osszdb = gyerekdb + dikadb + teljesardb
     osszbev = gyerekbev + diakbev + felnotbev
-    return osszbev
-
+    return osszbev, teljesardb, osszdb
+osszbev, teljesdb, osszdb = szamolos(teljes)
 osszbev = szamolos(teljes)
+print(osszdb)
 
-print(osszbev)
+def kihasznallak(osszdb):
+    kihaszn = osszdb / (15*20)
+    return kihaszn
+
+kihasznaltsag = kihasznallak(osszdb)
+print(round(kihasznaltsag*100, 2), "%")
+
