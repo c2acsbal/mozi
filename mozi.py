@@ -37,8 +37,8 @@ def bekero():
     print("Hány jegy kell (max. 5)")
     bekert = int(input())
 
-    while bekert > 5 and bekert < 2:
-        print("Ez így nem jó mert ötnél tőbb nem lehet")
+    while bekert > 5 or bekert < 2:
+        print("Ez így nem jó mert ötnél tőbb nem lehet ÉS 2-nél kisebb sem. Próbálja meg most normálisan!!")
         bekert = int(input())
     return bekert
 
@@ -101,7 +101,6 @@ def szamolos(teljes):
     teljesardb = 0
     dikadb = 0
     gyerekdb = 0
-    #0 - üres, 1 felnőtt, 2 - diák, 3 - gyerek
 
     for sor in teljes:
         for sorr in sor:
@@ -157,8 +156,6 @@ def kiir(vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor, kiha
             print("Bal oszlop","", sor, ". sor")
         elif oszlop == 2:
             print("Jobb oszlop","", sor, ". sor")
-    elif bekert == 0 or bekert > 5 or bekert == 1:
-        print("Kérlek normális értéket adjál már")
     else:
         print("Sajnos nem tudok ennyi  üres hellyel szolgálni :(")
     print("")
