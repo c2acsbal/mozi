@@ -29,7 +29,8 @@ teljes = feltolto()
 def kiiir(nezoter):
     for i in range(len(nezoter[0])-1):
             print(nezoter[0][i], str(i+1).zfill(2), nezoter[1][i])
-
+    print("")
+    print("           v        á        s       z       o      n")
 kiiir(teljes)
 
 def bekero():
@@ -156,6 +157,8 @@ def kiir(vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor, kiha
             print("Bal oszlop","", sor, ". sor")
         elif oszlop == 2:
             print("Jobb oszlop","", sor, ". sor")
+    elif bekert == 0:
+        print("")
     else:
         print("Sajnos nem tudok ennyi  üres hellyel szolgálni :(")
     print("")
