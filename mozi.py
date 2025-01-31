@@ -54,6 +54,7 @@ def ureshelyszuro(bekert):
         ezasor = 0
         josor = 0
         ezazoszlop = 0
+        joszlop = 0
         for resz in teljes:
             ezazoszlop += 1
             ezasor = 0
@@ -155,7 +156,9 @@ def kiir(vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor, kiha
             print("Bal oszlop","", sor, ". sor")
         elif oszlop == 2:
             print("Jobb oszlop","", sor, ". sor")
-    
+    else:
+        print("Sajnos nem tudok ennyi  üres hellyel szolgálni :(")
+    print("")
     print("Itt a mozi kihasználtsága százalélkban", round(kihasznaltsag*100, 2), "%")
     print("")
     print("Össszesen", osszdb, "jegyet értékesítettek")
