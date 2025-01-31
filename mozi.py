@@ -157,7 +157,7 @@ def kiir(vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor, kiha
             print("Bal oszlop","", sor, ". sor")
         elif oszlop == 2:
             print("Jobb oszlop","", sor, ". sor")
-    elif bekert == 0 or bekert > 5:
+    elif bekert == 0 or bekert > 5 or bekert == 1:
         print("Kérlek normális értéket adjál már")
     else:
         print("Sajnos nem tudok ennyi  üres hellyel szolgálni :(")
