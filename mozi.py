@@ -6,14 +6,14 @@ def feltolto():
     nezoterbal = []
     nezoterjobb = []
     teljes = []
-    while len(nezoterbal) != 16:
+    while len(nezoterbal) != 15:
         for i in range(10):
             randi = random.randint(0,3)
             sor.append(randi)
         nezoterbal.append(sor)
         sor = []
 
-    while len(nezoterjobb) != 16:
+    while len(nezoterjobb) != 15:
         for t in range(10):
             randi2 = random.randint(0,3)
             sor2.append(randi2)
@@ -27,10 +27,9 @@ def feltolto():
 teljes = feltolto()
 
 def kiiir(nezoter):
-    for i in range(len(nezoter[0])-1):
-            print(nezoter[0][i], str(i+1).zfill(2), nezoter[1][i])
-    print("")
     print("           v        á        s       z       o      n")
+    for i in range(len(nezoter[0])):
+            print(nezoter[0][i], str(i+1).zfill(2), nezoter[1][i])
 kiiir(teljes)
 
 def bekero():
@@ -56,40 +55,53 @@ def ureshelyszuro(bekert):
         josor = 0
         ezazoszlop = 0
         joszlop = 0
+        talalt = False
         for resz in teljes:
-            ezazoszlop += 1
-            ezasor = 0
-            for sor in resz:
-                    ezasor += 1
-                    for szek in sor:
-                        if szek == 0:
-                            ures += 1
-                        else:
-                            ures = 0
-                        if bekert == 2:
-                            if ures == 2:
-                                vanures2 = True
-                                joszlop = ezazoszlop
-                                josor = ezasor
-                        if bekert == 3:
-                            if ures == 3:
-                                vanures3 = True
-                                joszlop = ezazoszlop
-                                josor = ezasor
-                        if bekert == 4:
-                            if ures == 4:
-                                vanures4 = True
-                                joszlop = ezazoszlop
-                                josor = ezasor
-                        if bekert == 5:
-                            if ures == 5:
-                                vanures5 = True
-                                joszlop = ezazoszlop
-                                josor = ezasor
-                        if bekert > 1 and vanures2 == False and vanures3 == False and vanures4 == False and vanures5 == False and bekert < ures:
-                            vanuresplusz = False
-                            joszlop = ezazoszlop
-                            josor = ezasor
+            if not talalt:
+                ezazoszlop += 1
+                ezasor = 0
+                for sor in resz:
+                    if not talalt:
+                        ezasor += 1
+                        ures = 0
+                        for szek in sor:
+                            if not talalt:
+                                if szek == 0:
+                                    ures += 1
+                                else:
+                                    ures = 0
+
+                                if bekert == 2:
+                                    if ures == 2:
+                                        vanures2 = True
+                                        joszlop = ezazoszlop
+                                        josor = ezasor
+                                        talalt = True
+                                if bekert == 3:
+                                    if ures == 3:
+                                        vanures3 = True
+                                        joszlop = ezazoszlop
+                                        josor = ezasor
+                                        talalt = True
+                                if bekert == 4:
+                                    if ures == 4:
+                                        vanures4 = True
+                                        joszlop = ezazoszlop
+                                        josor = ezasor
+                                        talalt = True
+                                if bekert == 5:
+                                    if ures == 5:
+                                        vanures5 = True
+                                        joszlop = ezazoszlop
+                                        josor = ezasor
+                                        talalt = True
+                                if bekert > 1 and vanures2 == False and vanures3 == False and vanures4 == False and vanures5 == False and bekert < ures:
+                                    vanuresplusz = True
+                                    joszlop = ezazoszlop
+                                    josor = ezasor
+                                    talalt = True
+    if not talalt:                    
+        joszlop = 0
     return(vanures2, vanures3, vanures4, vanures5, vanuresplusz, joszlop, josor)
 
 vanures2, vanures3, vanures4, vanures5, vanuresplusz, oszlop, sor = ureshelyszuro(bekert)
